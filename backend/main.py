@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes.consistency import router as consistency_router
+
 from database import engine, Base
 import models
 
 from routes.world import router as world_router
 from routes.lore import router as lore_router
+from routes.consistency import router as consistency_router
 
 
 # Create database tables
@@ -34,6 +35,7 @@ app.add_middleware(
 app.include_router(world_router)
 app.include_router(lore_router)
 app.include_router(consistency_router)
+
 
 # Home endpoint
 @app.get("/")
